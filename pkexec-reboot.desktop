@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+X-Nemo-Application-Type=silica-qt5
+Icon=pkexec-reboot
+Exec=invoker --single-instance --type=silica-qt5 sailfish-qml pkexec-reboot
+Name=pkexec reboot
