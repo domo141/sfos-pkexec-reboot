@@ -8,7 +8,7 @@
 #	    All rights reserved
 #
 # Created: Mon 02 Aug 2021 18:04:22 EEST too
-# Last modified: Thu 18 Nov 2021 21:20:58 +0200 too
+# Last modified: Sat 25 Jun 2022 16:04:28 +0300 too
 
 # Note: Started with Makefile, but got "make: not found" (minimal deps FTW).
 #       I would change emphasis of this script elsewhere but naming is hard...
@@ -23,7 +23,7 @@ set -euf  # hint: sh -x thisfile [args] to trace execution
 
 saved_IFS=$IFS; readonly saved_IFS
 
-die () { printf '%s\n' "$@"; exit 1; } >&2
+die () { printf '%s\n' '' "$@" ''; exit 1; } >&2
 x () { printf '+ %s\n' "$*" >&2; "$@"; }
 x_exec () { printf '+ %s\n' "$*" >&2; exec "$@"; }
 
@@ -41,7 +41,7 @@ Commands:
 
    test   -- \"invoke\" sailfish-qml test  (run current code under development)
 
- grep devdev $0 ;: to see (undocumented) commands
+ grep de"vd"ev $0 ;: to see '('undocumented')' commands
 "
  if test "${SSH_CONNECTION-}"
  then
@@ -95,8 +95,13 @@ devdev_cmd_test ()
 
 devdev_cmd_sshp ()      # create persistent ssh connection...
 {
-	test $# -ge 4 ||
-die "Usage: ${0##*/} {name} {time}(s|m|h|d|w) [[user]@]{host} [command [args]]"
+	test $# -ge 4 || {
+		case $0 in ./*) n=$0 ;; *) n=${0##*/} ;; esac
+		rest='[[user]@]{host} [command [args]]'
+		die "Usage: ${0##*/} $1 {name} {time}(s|m|h|d|w) $rest" \
+		'' ": Hint; $n $1 .15 4h nemo@192.168.2.15 date; date" \
+		'' ': Then; ssh .15 date; date'
+	}
 	echo "Checking/creating persistent connection lasting $2"
 	z=`ssh -O check "$2" 2>&1` &&
 	{ printf '%s\n%s\n' "$z" "(ssh $2 -O exit to exit)"; exit 0; } ||
@@ -172,7 +177,7 @@ devdev_cmd_pp ()        # postprocess to 86x86
 }
 
 
-devdev_cmd_$1 "$@"
+de'vd'ev_cmd_$1 "$@"
 
 
 # Local variables:
