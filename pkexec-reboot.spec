@@ -11,7 +11,7 @@
 
 Name:        pkexec-reboot
 Summary:     Reboot or Poweroff via pkexec(1)
-Version:     1.0
+Version:     1.1
 Release:     1
 License:     BSD-2-Clause
 Requires:    sailfishsilica-qt5 >= 0.10.9
