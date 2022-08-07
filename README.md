@@ -5,6 +5,16 @@ pkexec reboot (Sailfish edition)
 (Sailfish edition as it is now known if this works elsewhere
 (also at least this works for me :))
 
+(Note: I've been informed (thanks "eson57") there is option to
+ "Show reboot option on Top menu" in Settings -> Developer tools.
+ IFAIHH everyone can enable it (and just not those who have
+ enabled "Developer mode").
+ I have set the language in my device to Finnish, which made it
+ even harder to find this option (but it may even be to hard
+ fo find even when English is in use).)
+
+.
+
 The *reboot* button in QML UI executes `reboot(1)` command
 via `pkexec(1)`; The PolicyKit tool `pkexec` makes device to
 ask security code to be entered for confirmation. With correct
@@ -12,10 +22,6 @@ code `reboot` as super user (root) is executed.
 
 For completeness, *poweroff* button is provided. The use of
 system power button may be more user friendly, though.
-
-(I'd be happy if this program gets obsoleted
- by system-provided reboot functionality)
-
 
 Install
 -------
